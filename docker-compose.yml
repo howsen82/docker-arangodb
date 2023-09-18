@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  arangodb:
+    container_name: arangodb
+    image: arangodb:latest
+    hostname: arangodb
+    network_mode: host
+    mem_limit: 2g
+    volumes:
+      - /data/arangodb/data:/var/lib/arangodb3:rw
+      - /data/arangodb/apps:/var/lib/arangodb3-apps:rw
+    environment:
+      - ARANGO_ROOT_PASSWORD=password
+    restart: unless-stopped
+
+# http://127.0.0.1:8529
+# Login using 'root'
